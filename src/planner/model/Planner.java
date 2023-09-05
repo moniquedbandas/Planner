@@ -9,7 +9,7 @@ public class Planner {
     public static void main(String[] args) {
         TelaInicial telIni = new TelaInicial();
         telIni.setVisible(true);
-        telIni.setSize(400,550);
+        telIni.setSize(400,500);
         telIni.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         }
     

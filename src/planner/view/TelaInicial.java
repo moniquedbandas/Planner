@@ -119,8 +119,9 @@ public class TelaInicial extends javax.swing.JFrame {
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
         TelaAtividades telaAtiv = new TelaAtividades();
         telaAtiv.setVisible(true);
-        telaAtiv.setSize(700,700);
+        telaAtiv.setSize(1000,800);
         telaAtiv.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        
         this.dispose();
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
