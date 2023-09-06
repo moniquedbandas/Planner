@@ -1,10 +1,11 @@
 package planner.model;
 
+import planner.DAO.ExceptionMVC;
 import planner.DAO.PessoaDAO;
 
 public class Pessoa {
     
-   private String usuario, senha;
+    private String usuario, senha;
 
     public Pessoa() {
     }
@@ -30,10 +31,9 @@ public class Pessoa {
         this.senha = senha;
     }
 
-//    public Pessoa cadastraPessoa(Pessoa p) {
-//       PessoaDAO pDAO = new PessoaDAO();
-//       return pDAO.cadastraPessoa(p);
-//    }
+    public void cadastraPessoa (Pessoa p) throws ExceptionMVC {
+      new PessoaDAO().cadastraPessoa(p);
+    }
    
    
 }

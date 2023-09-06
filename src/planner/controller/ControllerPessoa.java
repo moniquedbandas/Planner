@@ -2,6 +2,7 @@ package planner.controller;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import planner.DAO.ExceptionMVC;
 import planner.DAO.PessoaDAO;
 import planner.model.Pessoa;
 
@@ -30,13 +31,13 @@ public class ControllerPessoa {
         }
         
     }
-//    public Pessoa cadastraPessoa(String usuario, String senha){
-//        if(usuario != null && senha != null){
-//            Pessoa p = new Pessoa(usuario, senha);
-//            return p.cadastraPessoa(p);
-//        }else{
-//            return null;
-//        }
-//    }
+    public boolean cadastraPessoa(String usuario, String senha) throws ExceptionMVC {
+        if(usuario != null && senha != null){
+            Pessoa p = new Pessoa(usuario, senha);
+            p.cadastraPessoa(p);
+            return true;
+        }
+        return false;
+    }
     
 }

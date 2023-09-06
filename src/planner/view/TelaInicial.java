@@ -56,8 +56,9 @@ public class TelaInicial extends javax.swing.JFrame {
 
         jButtonLogin.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButtonLogin.setText("ENTRAR");
+        jButtonLogin.setActionCommand("");
         jButtonLogin.setContentAreaFilled(false);
-        jButtonLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButtonLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLoginActionPerformed(evt);
@@ -66,6 +67,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
         brNovoUsuario.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         brNovoUsuario.setText("NOVO ");
+        brNovoUsuario.setActionCommand("");
         brNovoUsuario.setContentAreaFilled(false);
         brNovoUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         brNovoUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -81,30 +83,30 @@ public class TelaInicial extends javax.swing.JFrame {
             .addGroup(painelInicialLayout.createSequentialGroup()
                 .addGroup(painelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelInicialLayout.createSequentialGroup()
-                        .addGap(173, 173, 173)
-                        .addComponent(jLabelLogin))
+                        .addGap(116, 116, 116)
+                        .addComponent(brNovoUsuario)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonLogin))
                     .addGroup(painelInicialLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
+                        .addGap(48, 48, 48)
                         .addGroup(painelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabelUsuario)
                             .addComponent(jLabelSenha))
                         .addGap(18, 18, 18)
                         .addGroup(painelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextFieldUsuario)
-                            .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                            .addGroup(painelInicialLayout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(brNovoUsuario)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonLogin)))))
-                .addContainerGap(90, Short.MAX_VALUE))
+                            .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(painelInicialLayout.createSequentialGroup()
+                        .addGap(165, 165, 165)
+                        .addComponent(jLabelLogin)))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         painelInicialLayout.setVerticalGroup(
             painelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelInicialLayout.createSequentialGroup()
-                .addGap(142, 142, 142)
+                .addGap(127, 127, 127)
                 .addComponent(jLabelLogin)
-                .addGap(43, 43, 43)
+                .addGap(37, 37, 37)
                 .addGroup(painelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelUsuario)
                     .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -112,7 +114,7 @@ public class TelaInicial extends javax.swing.JFrame {
                 .addGroup(painelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSenha)
                     .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(54, 54, 54)
                 .addGroup(painelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonLogin)
                     .addComponent(brNovoUsuario))
