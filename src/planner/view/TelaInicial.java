@@ -3,9 +3,12 @@ package planner.view;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import planner.controller.ControllerPessoa;
 
 public class TelaInicial extends javax.swing.JFrame {
-
+    
+    
     public TelaInicial() {
         initComponents();
     }
@@ -29,6 +32,7 @@ public class TelaInicial extends javax.swing.JFrame {
         jTextFieldUsuario = new javax.swing.JTextField();
         jPasswordFieldSenha = new javax.swing.JPasswordField();
         jButtonLogin = new javax.swing.JButton();
+        brNovoUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Your daily activities!");
@@ -53,10 +57,20 @@ public class TelaInicial extends javax.swing.JFrame {
         jButtonLogin.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jButtonLogin.setText("ENTRAR");
         jButtonLogin.setContentAreaFilled(false);
-        jButtonLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLoginActionPerformed(evt);
+            }
+        });
+
+        brNovoUsuario.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        brNovoUsuario.setText("NOVO ");
+        brNovoUsuario.setContentAreaFilled(false);
+        brNovoUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        brNovoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                brNovoUsuarioActionPerformed(evt);
             }
         });
 
@@ -77,10 +91,12 @@ public class TelaInicial extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(painelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextFieldUsuario)
-                            .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)))
-                    .addGroup(painelInicialLayout.createSequentialGroup()
-                        .addGap(161, 161, 161)
-                        .addComponent(jButtonLogin)))
+                            .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                            .addGroup(painelInicialLayout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(brNovoUsuario)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonLogin)))))
                 .addContainerGap(90, Short.MAX_VALUE))
         );
         painelInicialLayout.setVerticalGroup(
@@ -96,9 +112,11 @@ public class TelaInicial extends javax.swing.JFrame {
                 .addGroup(painelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSenha)
                     .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(69, 69, 69)
-                .addComponent(jButtonLogin)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addGroup(painelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonLogin)
+                    .addComponent(brNovoUsuario))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -118,12 +136,30 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
         TelaAtividades telaAtiv = new TelaAtividades();
-        telaAtiv.setVisible(true);
-        telaAtiv.setSize(1000,800);
-        telaAtiv.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
-        this.dispose();
+        try{
+        String usuario, senha;
+        usuario = jTextFieldUsuario.getText();
+        senha = jPasswordFieldSenha.getText();
+        ControllerPessoa controllerPessoa = new ControllerPessoa();
+        if(controllerPessoa.autenticaPessoa(usuario, senha)){
+            JOptionPane.showMessageDialog(null, "Logado com sucesso!! ");
+            telaAtiv.setVisible(true);
+        }  
+        else{
+            JOptionPane.showMessageDialog(null, "Usuario ou senha invalida.");         
+        } 
+        }catch(Exception e){            
+            JOptionPane.showMessageDialog(null, "FML" + e);
+        }
     }//GEN-LAST:event_jButtonLoginActionPerformed
+
+    private void brNovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brNovoUsuarioActionPerformed
+        CadastroUsuario cadUsu = new CadastroUsuario();
+        cadUsu.setVisible(true);
+        cadUsu.setSize(400,500);
+        cadUsu.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_brNovoUsuarioActionPerformed
 
     public static void main(String args[]) {
      
@@ -135,6 +171,7 @@ public class TelaInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton brNovoUsuario;
     private javax.swing.JButton jButtonLogin;
     private javax.swing.JLabel jLabelLogin;
     private javax.swing.JLabel jLabelSenha;

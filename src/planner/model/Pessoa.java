@@ -30,10 +30,10 @@ public class Pessoa {
         this.senha = senha;
     }
 
-    public Pessoa cadastraPessoa(Pessoa p) {
-       PessoaDAO pDAO = new PessoaDAO();
-       return pDAO.cadastraPessoa(p);
-    }
+//    public Pessoa cadastraPessoa(Pessoa p) {
+//       PessoaDAO pDAO = new PessoaDAO();
+//       return pDAO.cadastraPessoa(p);
+//    }
    
    
 }
