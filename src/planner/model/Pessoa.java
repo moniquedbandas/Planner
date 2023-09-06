@@ -1,5 +1,7 @@
 package planner.model;
 
+import planner.DAO.PessoaDAO;
+
 public class Pessoa {
     
    private String usuario, senha;
@@ -26,6 +28,11 @@ public class Pessoa {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public Pessoa cadastraPessoa(Pessoa p) {
+       PessoaDAO pDAO = new PessoaDAO();
+       return pDAO.cadastraPessoa(p);
     }
    
    

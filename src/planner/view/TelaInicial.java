@@ -32,7 +32,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Your daily activities!");
-        setIconImage(new ImageIcon(getClass().getResource("/planner/icons/icone.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/planner/icons/planner.png")).getImage());
         setResizable(false);
 
         jLabelLogin.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
