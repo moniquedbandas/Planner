@@ -4,14 +4,14 @@ import planner.DAO.CompromissoDAO;
 
 public class Compromisso {
     
-    private String descricao, dia, hora;
+    private String descricao, data, hora;
 
     public Compromisso() {
     }
 
-    public Compromisso(String descricao, String dia, String hora) {
+    public Compromisso(String descricao, String data, String hora) {
         this.descricao = descricao;
-        this.dia = dia;
+        this.data = data;
         this.hora = hora;
     }
 
@@ -23,12 +23,12 @@ public class Compromisso {
         this.descricao = compromisso;
     }
     
-    public String getDia() {
-        return dia;
+    public String getData() {
+        return data;
     }
 
-    public void setDia(String dia) {
-        this.dia = dia;
+    public void setData(String data) {
+        this.data = data;
     }
 
     public String getHora() {
@@ -39,10 +39,10 @@ public class Compromisso {
         this.hora = hora;
     }
 
-    public void cadastraCompromisso(Compromisso c1) {
+    public void cadastraCompromisso(Compromisso c1) throws Exception{
 //       CompromissoDAO cDAO = new CompromissoDAO();
 //       return cDAO.cadastraCompromisso(c1);
-        new CompromissoDAO().cadastraCompromisso(c1);
+        new CompromissoDAO().cadastraCompromisso(c1);        
     }
     
     

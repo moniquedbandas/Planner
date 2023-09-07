@@ -3,8 +3,12 @@ package planner.view;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import planner.controller.ControllerCompromisso;
+import planner.model.Compromisso;
 
 public class TelaAtividades extends javax.swing.JFrame {
 
@@ -244,7 +248,27 @@ public class TelaAtividades extends javax.swing.JFrame {
     }//GEN-LAST:event_btDeletarActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        // TODO add your handling code here:
+        boolean sucesso;
+        DefaultTableModel model = (DefaultTableModel) jTableCompromisso.getModel();
+        ArrayList<Compromisso> compromissos = new ArrayList<>();
+        
+        for(int i=0; i<model.getRowCount();i++){
+            String umaData = (String) model.getValueAt(i, 0);
+            String hora = (String) model.getValueAt(i, 1);
+            String descricao = (String) model.getValueAt(i, 2);
+            
+            Compromisso compromisso = new Compromisso(descricao, umaData, hora);
+            compromissos.add(compromisso);            
+        }
+        try {
+            ControllerCompromisso controllerCompromisso = new ControllerCompromisso();
+            sucesso = controllerCompromisso.cadastrarTabelaCompromisso(compromissos);
+            if(sucesso==true){
+                JOptionPane.showMessageDialog(null, "Compromissos salvos com sucesso!");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao salvar os compromissos.");
+        }
     }//GEN-LAST:event_btSalvarActionPerformed
 
     public static void main(String args[]) {
