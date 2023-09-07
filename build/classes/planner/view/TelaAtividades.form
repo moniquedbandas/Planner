@@ -51,47 +51,47 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="247" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jScrollPane1" min="-2" pref="447" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="380" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="btDeletar" max="32767" attributes="0"/>
+                              <Component id="btEditar" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btListar" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jTextField2" max="32767" attributes="0"/>
-                              <Component id="jComboBoxHorario" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jComboBoxHorario" pref="302" max="32767" attributes="0"/>
+                              <Component id="jTextFieldDescricao" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                  </Group>
-                  <EmptySpace min="-2" pref="294" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="344" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="273" max="-2" attributes="0"/>
                           <Component id="btLimpar" min="-2" pref="107" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                           <Component id="btAdicionar" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="380" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="294" max="-2" attributes="0"/>
                           <Component id="jDateChooser1" min="-2" pref="194" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="285" max="-2" attributes="0"/>
+                          <Component id="btSalvar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btSair" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btSair" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="425" max="-2" attributes="0"/>
+                  <EmptySpace pref="111" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -100,7 +100,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                   <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jComboBoxHorario" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -108,21 +108,34 @@
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldDescricao" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btAdicionar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="247" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="247" max="-2" attributes="0"/>
+                          <EmptySpace pref="27" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btListar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btEditar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btDeletar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btSair" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="66" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -144,7 +157,7 @@
                   <Table columnCount="3" rowCount="0">
                     <Column editable="true" title="Data" type="java.lang.Object"/>
                     <Column editable="true" title="Horario" type="java.lang.Object"/>
-                    <Column editable="true" title="Compromisso" type="java.lang.Object"/>
+                    <Column editable="true" title="Descricao" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -189,7 +202,7 @@
             <Property name="text" type="java.lang.String" value="COMPROMISSO: "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="jTextFieldDescricao">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Calibri" size="14" style="0"/>
@@ -266,12 +279,54 @@
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btSalvar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Calibri" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="SALVAR"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btSalvarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btEditar">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Calibri" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="EDITAR"/>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btDeletar">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Calibri" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="DELETAR"/>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btDeletarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btListar">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Calibri" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="LISTAR"/>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
