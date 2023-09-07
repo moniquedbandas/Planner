@@ -146,14 +146,13 @@ public class TelaInicial extends javax.swing.JFrame {
         if(controllerPessoa.autenticaPessoa(usuario, senha)){
             JOptionPane.showMessageDialog(null, "Logado com sucesso!! ");
             telaAtiv.setVisible(true);
-        }  
-        else{
+            this.dispose();
+        }else{
             JOptionPane.showMessageDialog(null, "Usuario ou senha invalida.");         
         } 
         }catch(Exception e){            
-            JOptionPane.showMessageDialog(null, "FML" + e);
-        }
-        this.dispose();
+            JOptionPane.showMessageDialog(null, "Erro ao logar: " + e);
+        }       
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
     private void brNovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brNovoUsuarioActionPerformed

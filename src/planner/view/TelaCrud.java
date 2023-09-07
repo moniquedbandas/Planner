@@ -1,5 +1,7 @@
 package planner.view;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,15 +26,24 @@ public class TelaCrud extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel(){
+            public void paintComponent(Graphics t){
+
+                ImageIcon im = new ImageIcon(getClass().getResource("/planner/icons/pagina.jpg"));
+                Image i =im.getImage();
+
+                t.drawImage(i,0,0, this.getSize().width,this.getSize().height,this);
+            }
+        };
         jLabelLista = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableLista = new javax.swing.JTable();
         btListar = new javax.swing.JButton();
         btEditar = new javax.swing.JButton();
         btDeletar = new javax.swing.JButton();
+        btSair = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Lista de compromissos");
         setIconImage(new ImageIcon(getClass().getResource("/planner/icons/planner.png")).getImage());
         setResizable(false);
@@ -54,7 +65,6 @@ public class TelaCrud extends javax.swing.JFrame {
 
         btListar.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         btListar.setText("Listar");
-        btListar.setContentAreaFilled(false);
         btListar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,50 +74,58 @@ public class TelaCrud extends javax.swing.JFrame {
 
         btEditar.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         btEditar.setText("Editar");
-        btEditar.setContentAreaFilled(false);
         btEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btDeletar.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         btDeletar.setText("Deletar");
-        btDeletar.setContentAreaFilled(false);
         btDeletar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btSair.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        btSair.setText("Sair");
+        btSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(jLabelLista, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 60, Short.MAX_VALUE)))
+                        .addGap(122, 122, 122)
+                        .addComponent(btListar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btEditar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btDeletar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btSair)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btListar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btEditar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btDeletar)
-                .addGap(95, 95, 95))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelLista, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(106, 106, 106))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(65, 65, 65)
                 .addComponent(jLabelLista, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btListar)
                     .addComponent(btEditar)
-                    .addComponent(btDeletar))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addComponent(btDeletar)
+                    .addComponent(btSair))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -142,6 +160,12 @@ public class TelaCrud extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btListarActionPerformed
 
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+       TelaAtividades telAtiv = new TelaAtividades();
+       telAtiv.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_btSairActionPerformed
+
     public static void main(String args[]) {
        
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -155,6 +179,7 @@ public class TelaCrud extends javax.swing.JFrame {
     private javax.swing.JButton btDeletar;
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btListar;
+    private javax.swing.JButton btSair;
     private javax.swing.JLabel jLabelLista;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

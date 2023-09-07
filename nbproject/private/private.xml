@@ -2,13 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/182210115/Documents/NetBeansProjects/Planner/src/planner/DAO/PessoaDAO.java</file>
-            <file>file:/C:/Users/182210115/Documents/NetBeansProjects/Planner/src/planner/controller/ControllerPessoa.java</file>
-            <file>file:/C:/Users/182210115/Documents/NetBeansProjects/Planner/src/planner/view/CadastroUsuario.java</file>
-            <file>file:/C:/Users/182210115/Documents/NetBeansProjects/Planner/src/planner/model/Planner.java</file>
-            <file>file:/C:/Users/182210115/Documents/NetBeansProjects/Planner/src/planner/view/TelaInicial.java</file>
-            <file>file:/C:/Users/182210115/Documents/NetBeansProjects/Planner/src/planner/model/Pessoa.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
