@@ -1,5 +1,6 @@
 package planner.model;
 
+import java.util.ArrayList;
 import planner.DAO.CompromissoDAO;
 
 public class Compromisso {
@@ -40,10 +41,13 @@ public class Compromisso {
     }
 
     public void cadastraCompromisso(Compromisso c1) throws Exception{
-//       CompromissoDAO cDAO = new CompromissoDAO();
-//       return cDAO.cadastraCompromisso(c1);
         new CompromissoDAO().cadastraCompromisso(c1);        
     }
+    public ArrayList<Compromisso> listaCompromisso() throws Exception{
+       return new CompromissoDAO().listaCompromisso();
+    }
+
+    
     
     
 }

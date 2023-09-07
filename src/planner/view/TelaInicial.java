@@ -153,6 +153,7 @@ public class TelaInicial extends javax.swing.JFrame {
         }catch(Exception e){            
             JOptionPane.showMessageDialog(null, "FML" + e);
         }
+        this.dispose();
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
     private void brNovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brNovoUsuarioActionPerformed

@@ -40,8 +40,6 @@ public class TelaAtividades extends javax.swing.JFrame {
         jComboBoxHorario = new javax.swing.JComboBox<>();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         btSalvar = new javax.swing.JButton();
-        btEditar = new javax.swing.JButton();
-        btDeletar = new javax.swing.JButton();
         btListar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -109,25 +107,14 @@ public class TelaAtividades extends javax.swing.JFrame {
             }
         });
 
-        btEditar.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        btEditar.setText("EDITAR");
-        btEditar.setContentAreaFilled(false);
-        btEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        btDeletar.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        btDeletar.setText("DELETAR");
-        btDeletar.setContentAreaFilled(false);
-        btDeletar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btDeletar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btDeletarActionPerformed(evt);
-            }
-        });
-
         btListar.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         btListar.setText("LISTAR");
-        btListar.setContentAreaFilled(false);
         btListar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btListarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelAtividadesLayout = new javax.swing.GroupLayout(painelAtividades);
         painelAtividades.setLayout(painelAtividadesLayout);
@@ -137,12 +124,7 @@ public class TelaAtividades extends javax.swing.JFrame {
                 .addGroup(painelAtividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelAtividadesLayout.createSequentialGroup()
                         .addGap(180, 180, 180)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addGroup(painelAtividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btDeletar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btListar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(painelAtividadesLayout.createSequentialGroup()
                         .addGap(141, 141, 141)
                         .addGroup(painelAtividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -161,11 +143,13 @@ public class TelaAtividades extends javax.swing.JFrame {
                         .addGap(294, 294, 294)
                         .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(painelAtividadesLayout.createSequentialGroup()
-                        .addGap(285, 285, 285)
+                        .addGap(231, 231, 231)
+                        .addComponent(btListar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(btSalvar)
                         .addGap(18, 18, 18)
                         .addComponent(btSair)))
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(228, Short.MAX_VALUE))
         );
         painelAtividadesLayout.setVerticalGroup(
             painelAtividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,22 +168,13 @@ public class TelaAtividades extends javax.swing.JFrame {
                 .addGroup(painelAtividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btAdicionar)
                     .addComponent(btLimpar))
-                .addGroup(painelAtividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelAtividadesLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAtividadesLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btListar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btEditar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btDeletar)
-                        .addGap(112, 112, 112)))
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(painelAtividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btSair)
-                    .addComponent(btSalvar))
+                    .addComponent(btSalvar)
+                    .addComponent(btListar))
                 .addContainerGap())
         );
 
@@ -243,10 +218,6 @@ public class TelaAtividades extends javax.swing.JFrame {
        model.addRow(new Object[]{umaData, hora, descricao});
     }//GEN-LAST:event_btAdicionarActionPerformed
 
-    private void btDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeletarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btDeletarActionPerformed
-
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         boolean sucesso;
         DefaultTableModel model = (DefaultTableModel) jTableCompromisso.getModel();
@@ -271,6 +242,12 @@ public class TelaAtividades extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btSalvarActionPerformed
 
+    private void btListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListarActionPerformed
+       TelaCrud telCr = new TelaCrud();
+       telCr.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_btListarActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -282,8 +259,6 @@ public class TelaAtividades extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdicionar;
-    private javax.swing.JButton btDeletar;
-    private javax.swing.JButton btEditar;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btListar;
     private javax.swing.JButton btSair;

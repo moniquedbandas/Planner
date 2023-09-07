@@ -5,15 +5,7 @@ import planner.DAO.CompromissoDAO;
 import planner.model.Compromisso;
 
 public class ControllerCompromisso {
-    
-//    public boolean cadastraCompromisso(String descricao, String data, String hora) throws Exception{
-//        if(descricao != null && data != null && hora != null){
-//            Compromisso c1 = new Compromisso(descricao, data, hora);
-//            return c1.cadastraCompromisso(c1);
-//        }else{
-//        return null;
-//        }
-//    }
+
     public boolean cadastraCompromisso(String descricao, String data, String hora) throws Exception{
         if(descricao != null && data != null && hora != null){
             Compromisso c1 = new Compromisso(descricao, data, hora);
@@ -41,6 +33,10 @@ public class ControllerCompromisso {
             
             return false;
         }
+    }
+
+    public ArrayList<Compromisso> listaCompromisso() throws Exception {
+        return new Compromisso().listaCompromisso();
     }
 
 }
