@@ -17,7 +17,7 @@ public class CompromissoDAO {
         try{
             connection = new ConnectionMVC().getConnection();
             pStatement = connection.prepareStatement(sql);
-            pStatement.setString(1, c1.getCompromisso());
+            pStatement.setString(1, c1.getDescricao());
             pStatement.setString(2, c1.getData());
             pStatement.setString(3, c1.getHora());
             pStatement.execute();
@@ -56,7 +56,7 @@ public class CompromissoDAO {
                   compromissos = new ArrayList<Compromisso>();
                   while(rs.next()){
                       Compromisso compromisso = new Compromisso();
-                      compromisso.setCompromisso(rs.getString("descricao"));   
+                      compromisso.setDescricao(rs.getString("descricao"));   
                       compromisso.setData(rs.getString("data"));
                       compromisso.setHora(rs.getString("hora"));                                        
                       compromissos.add(compromisso);                                         
@@ -82,14 +82,14 @@ public class CompromissoDAO {
     }
 
     public void editarCompromissos(Compromisso c1) throws ExceptionMVC {
-        String sql = "UPDATE compromisso SET compromisso=?, data=?, hora=?";
+        String sql = "UPDATE compromisso SET descricao=?, data=?, hora=? WHERE codCompromisso =?";
         PreparedStatement pStatement = null;
         Connection connection = null;
         
         try{
             connection = new ConnectionMVC().getConnection();
             pStatement = connection.prepareStatement(sql);
-            pStatement.setString(1, c1.getCompromisso());
+            pStatement.setString(1, c1.getDescricao());
             pStatement.setString(2, c1.getData());
             pStatement.setString(3, c1.getHora());
             pStatement.execute();

@@ -20,7 +20,7 @@ public class ControllerCompromisso {
             CompromissoDAO cDAO = new CompromissoDAO();            
             for (Compromisso compromisso : compromissos) {
                 boolean sucesso = cadastraCompromisso(
-                    compromisso.getCompromisso(),
+                    compromisso.getDescricao(),
                     compromisso.getData(),
                     compromisso.getHora()
                 );

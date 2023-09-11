@@ -6,6 +6,7 @@ import planner.DAO.CompromissoDAO;
 public class Compromisso {
     
     private String descricao, data, hora;
+    private int codCompromisso;
 
     public Compromisso() {
     }
@@ -16,12 +17,21 @@ public class Compromisso {
         this.hora = hora;
     }
 
-    public String getCompromisso() {
+    public String getDescricao() {
         return descricao;
     }
-    public void setCompromisso(String compromisso) {
-        this.descricao = compromisso;
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
+
+    public int getCodCompromisso() {
+        return codCompromisso;
+    }
+
+    public void setCodCompromisso(int codCompromisso) {
+        this.codCompromisso = codCompromisso;
+    }   
     public String getData() {
         return data;
     }

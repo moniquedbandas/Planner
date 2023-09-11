@@ -65,7 +65,7 @@ public class TelaCrud extends javax.swing.JFrame {
 
         btListar.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         btListar.setText("Listar");
-        btListar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btListar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btListarActionPerformed(evt);
@@ -74,15 +74,20 @@ public class TelaCrud extends javax.swing.JFrame {
 
         btEditar.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         btEditar.setText("Editar");
-        btEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
 
         btDeletar.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         btDeletar.setText("Deletar");
-        btDeletar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btDeletar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btSair.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         btSair.setText("Sair");
-        btSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btSair.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSairActionPerformed(evt);
@@ -98,7 +103,6 @@ public class TelaCrud extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btListar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btEditar)
@@ -151,7 +155,7 @@ public class TelaCrud extends javax.swing.JFrame {
         
         try{
             ArrayList<Compromisso> compromissos = controllerCompromisso.listaCompromisso();
-            compromissos.forEach((Compromisso compromisso) -> {tableModel.addRow(new Object[] {compromisso.getData(), compromisso.getHora(), compromisso.getCompromisso()});  
+            compromissos.forEach((Compromisso compromisso) -> {tableModel.addRow(new Object[] {compromisso.getData(), compromisso.getHora(), compromisso.getDescricao()});  
             });
             jTableLista.setModel(tableModel);            
         }
@@ -165,6 +169,35 @@ public class TelaCrud extends javax.swing.JFrame {
        telAtiv.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTableLista.getModel();
+        int selectedRow = jTableLista.getSelectedRow();
+        boolean sucesso;
+        
+        if(selectedRow == -1){
+            JOptionPane.showMessageDialog(null, "Selecione uma linha da tabela para editar");
+            return;
+        }
+        try {
+            String data = (String) model.getValueAt(selectedRow, 0);
+            String hora = (String) model.getValueAt(selectedRow, 1);
+            String descricao = (String) model.getValueAt(selectedRow, 2);
+            ControllerCompromisso controllerCompromisso = new ControllerCompromisso();
+            sucesso = controllerCompromisso.editarCompromissos(descricao, data, hora);
+            if(sucesso){
+                model.setValueAt(data, selectedRow,0);
+                model.setValueAt(hora, selectedRow, 1);
+                model.setValueAt(descricao, selectedRow, 2);
+                JOptionPane.showMessageDialog(null, "Compromisso alterado com sucesso");
+                selectedRow = jTableLista.getSelectedRow();
+            }else{
+                JOptionPane.showMessageDialog(null, "Os campos não foram preenchidos corretamente.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro encontrado: " + e);
+        }
+    }//GEN-LAST:event_btEditarActionPerformed
 
     public static void main(String args[]) {
        
