@@ -38,5 +38,14 @@ public class ControllerCompromisso {
     public ArrayList<Compromisso> listaCompromisso() throws Exception {
         return new Compromisso().listaCompromisso();
     }
+    
+    public boolean editarCompromissos(String descricao, String data, String hora) throws Exception{
+        if(descricao != null && data != null && hora != null){
+            Compromisso c1 = new Compromisso(descricao, data, hora);
+            c1.editarCompromissos(c1);
+            return true;
+        }
+        return false;
+    }
 
 }

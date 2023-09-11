@@ -43,6 +43,7 @@ public class CompromissoDAO {
 
     public ArrayList<Compromisso> listaCompromisso() throws ExceptionMVC{        
     String sql = "SELECT * FROM compromisso ORDER BY data ";
+    //String sql = "SELECT * FROM compromisso WHERE codPessoa =? ORDER BY data ";
         Connection connection = null;
         PreparedStatement pStatement = null;
         ArrayList<Compromisso> compromissos = null;   
@@ -62,7 +63,7 @@ public class CompromissoDAO {
                 }
             }
          } catch(SQLException e){
-            throw new ExceptionMVC("Erro ao consultar cliente: "+ e);
+            throw new ExceptionMVC("Erro ao consultar compromisso: "+ e);
         }finally{
             try{
                 if(pStatement != null){
@@ -79,5 +80,40 @@ public class CompromissoDAO {
             }
         }return compromissos;
     }
-       
+
+    public void editarCompromissos(Compromisso c1) throws ExceptionMVC {
+        String sql = "UPDATE compromisso SET compromisso=?, data=?, hora=?";
+        PreparedStatement pStatement = null;
+        Connection connection = null;
+        
+        try{
+            connection = new ConnectionMVC().getConnection();
+            pStatement = connection.prepareStatement(sql);
+            pStatement.setString(1, c1.getCompromisso());
+            pStatement.setString(2, c1.getData());
+            pStatement.setString(3, c1.getHora());
+            pStatement.execute();
+            
+        } catch(SQLException e){
+            throw new ExceptionMVC("Erro ao cadastrar compromissos: "+ e);
+        } finally{            
+            try{
+                if(pStatement != null){
+                    pStatement.close();
+                } 
+            }catch(SQLException e){
+              throw new ExceptionMVC("Erro ao fechar statement: "+ e);
+            } try {
+                if(connection != null){
+                    connection.close();
+                }
+            }catch(SQLException e){
+               throw new ExceptionMVC("Erro ao fechar a conexao: "+ e);
+                }
+        
+            }
+    }    
+
+    
+    
 }
