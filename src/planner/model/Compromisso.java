@@ -2,6 +2,7 @@ package planner.model;
 
 import java.util.ArrayList;
 import planner.DAO.CompromissoDAO;
+import planner.DAO.ExceptionMVC;
 
 public class Compromisso {
     
@@ -45,14 +46,14 @@ public class Compromisso {
         this.hora = hora;
     }
 
-    public void cadastraCompromisso(Compromisso c1) throws Exception{
+    public void cadastraCompromisso(Compromisso c1) throws ExceptionMVC{
         new CompromissoDAO().cadastraCompromisso(c1);        
     }
-    public ArrayList<Compromisso> listaCompromisso() throws Exception{
+    public ArrayList<Compromisso> listaCompromisso() throws ExceptionMVC{
        return new CompromissoDAO().listaCompromisso();
     }
 
-    public void editarCompromissos(Compromisso c1) throws Exception{
+    public void editarCompromissos(Compromisso c1) throws ExceptionMVC{
         new CompromissoDAO().editarCompromissos(c1);
     }
 
