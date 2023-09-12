@@ -3,12 +3,9 @@ package planner.view;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import planner.DAO.ExceptionMVC;
 import planner.controller.ControllerCompromisso;
 import planner.model.Compromisso;
 
@@ -158,7 +155,6 @@ public class TelaCrud extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListarActionPerformed
-        //String nome = jTextFieldConsultaCliente.getText();
         DefaultTableModel tableModel = (DefaultTableModel) jTableLista.getModel();
         tableModel.setRowCount(0);
         ControllerCompromisso controllerCompromisso = new ControllerCompromisso();
