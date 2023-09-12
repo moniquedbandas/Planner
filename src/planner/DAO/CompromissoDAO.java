@@ -10,16 +10,16 @@ import planner.model.Compromisso;
 public class CompromissoDAO {
 
     public void cadastraCompromisso(Compromisso c1) throws ExceptionMVC {
-        String sql = "INSERT INTO compromisso (descricao, data, hora ) VALUE (?,?,?)";
+        String sql = "INSERT INTO compromisso (data, hora,descricao ) VALUES (?,?,?)";
         PreparedStatement pStatement = null;
         Connection connection = null;
         
         try{
             connection = new ConnectionMVC().getConnection();
             pStatement = connection.prepareStatement(sql);
-            pStatement.setString(1, c1.getDescricao());
-            pStatement.setString(2, c1.getData());
-            pStatement.setString(3, c1.getHora());
+            pStatement.setString(1, c1.getData());
+            pStatement.setString(2, c1.getHora());
+            pStatement.setString(3, c1.getDescricao());
             pStatement.execute();
             
         } catch(SQLException e){
@@ -56,9 +56,10 @@ public class CompromissoDAO {
                   compromissos = new ArrayList<Compromisso>();
                   while(rs.next()){
                       Compromisso compromisso = new Compromisso();
-                      compromisso.setDescricao(rs.getString("descricao"));   
+                      compromisso.setCodCompromisso(rs.getInt("codCompromisso"));                                            
                       compromisso.setData(rs.getString("data"));
-                      compromisso.setHora(rs.getString("hora"));                                        
+                      compromisso.setHora(rs.getString("hora"));  
+                      compromisso.setDescricao(rs.getString("descricao")); 
                       compromissos.add(compromisso);                                         
                 }
             }
@@ -82,16 +83,17 @@ public class CompromissoDAO {
     }
 
     public void editarCompromissos(Compromisso c1) throws ExceptionMVC {
-        String sql = "UPDATE compromisso SET descricao=?, data=?, hora=? WHERE codCompromisso =?";
+        String sql = "UPDATE compromisso SET data=?, hora=?, descricao=? WHERE codCompromisso =?";
         PreparedStatement pStatement = null;
         Connection connection = null;
         
         try{
             connection = new ConnectionMVC().getConnection();
-            pStatement = connection.prepareStatement(sql);
-            pStatement.setString(1, c1.getDescricao());
-            pStatement.setString(2, c1.getData());
-            pStatement.setString(3, c1.getHora());
+            pStatement = connection.prepareStatement(sql);            
+            pStatement.setString(1, c1.getData());
+            pStatement.setString(2, c1.getHora());
+            pStatement.setString(3, c1.getDescricao());
+            pStatement.setInt(4, c1.getCodCompromisso());
             pStatement.execute();
             
         } catch(SQLException e){

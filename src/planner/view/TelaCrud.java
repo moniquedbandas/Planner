@@ -58,9 +58,17 @@ public class TelaCrud extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Data", "Hora", "Descricao"
+                "Codigo", "Data", "Hora", "Descricao"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTableLista);
 
         btListar.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
@@ -99,22 +107,24 @@ public class TelaCrud extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(174, 174, 174)
+                .addComponent(jLabelLista, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btListar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btEditar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btDeletar)
                         .addGap(132, 132, 132)
-                        .addComponent(btSair)))
+                        .addComponent(btSair)
+                        .addGap(8, 8, 8)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(174, 174, 174)
-                .addComponent(jLabelLista, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,13 +133,13 @@ public class TelaCrud extends javax.swing.JFrame {
                 .addComponent(jLabelLista, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btListar)
                     .addComponent(btEditar)
                     .addComponent(btDeletar)
                     .addComponent(btSair))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -155,12 +165,13 @@ public class TelaCrud extends javax.swing.JFrame {
         
         try{
             ArrayList<Compromisso> compromissos = controllerCompromisso.listaCompromisso();
-            compromissos.forEach((Compromisso compromisso) -> {tableModel.addRow(new Object[] {compromisso.getData(), compromisso.getHora(), compromisso.getDescricao()});  
+            compromissos.forEach((Compromisso compromisso) -> 
+            {tableModel.addRow(new Object[] {compromisso.getCodCompromisso(),compromisso.getData(), compromisso.getHora(), compromisso.getDescricao()});  
             });
             jTableLista.setModel(tableModel);            
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(null, "erro"+ e);
+            JOptionPane.showMessageDialog(null, "Erro"+ e);
         }
     }//GEN-LAST:event_btListarActionPerformed
 
@@ -171,6 +182,7 @@ public class TelaCrud extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        //System.out.println("Botão Editar clicado!");
         DefaultTableModel model = (DefaultTableModel) jTableLista.getModel();
         int selectedRow = jTableLista.getSelectedRow();
         boolean sucesso;
@@ -180,15 +192,16 @@ public class TelaCrud extends javax.swing.JFrame {
             return;
         }
         try {
-            String data = (String) model.getValueAt(selectedRow, 0);
-            String hora = (String) model.getValueAt(selectedRow, 1);
-            String descricao = (String) model.getValueAt(selectedRow, 2);
-            ControllerCompromisso controllerCompromisso = new ControllerCompromisso();
-            sucesso = controllerCompromisso.editarCompromissos(descricao, data, hora);
+            int codCompromisso = Integer.parseInt(model.getValueAt(selectedRow, 0).toString());
+            String data = (String) model.getValueAt(selectedRow, 1);
+            String hora = (String) model.getValueAt(selectedRow, 2);
+            String descricao = (String) model.getValueAt(selectedRow, 3);
+            ControllerCompromisso controllerCompromisso = new ControllerCompromisso();            
+            sucesso = controllerCompromisso.editarCompromissos(codCompromisso, data, hora, descricao);
             if(sucesso){
-                model.setValueAt(data, selectedRow,0);
-                model.setValueAt(hora, selectedRow, 1);
-                model.setValueAt(descricao, selectedRow, 2);
+                model.setValueAt(data, selectedRow,1);
+                model.setValueAt(hora, selectedRow, 2);
+                model.setValueAt(descricao, selectedRow, 3);
                 JOptionPane.showMessageDialog(null, "Compromisso alterado com sucesso");
                 selectedRow = jTableLista.getSelectedRow();
             }else{

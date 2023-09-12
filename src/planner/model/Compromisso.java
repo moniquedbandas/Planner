@@ -11,7 +11,7 @@ public class Compromisso {
     public Compromisso() {
     }
 
-    public Compromisso(String descricao, String data, String hora) {
+    public Compromisso(String data, String hora,String descricao) {
         this.descricao = descricao;
         this.data = data;
         this.hora = hora;
