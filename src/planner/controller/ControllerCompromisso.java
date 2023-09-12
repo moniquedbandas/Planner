@@ -1,6 +1,7 @@
 package planner.controller;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import planner.DAO.CompromissoDAO;
 import planner.DAO.ExceptionMVC;
 import planner.model.Compromisso;
@@ -30,8 +31,8 @@ public class ControllerCompromisso {
                 }
             }
             return true;
-        } catch (Exception e) {
-            
+        } catch (ExceptionMVC e) {
+            JOptionPane.showMessageDialog(null, "Erro: " + e);
             return false;
         }
     }
