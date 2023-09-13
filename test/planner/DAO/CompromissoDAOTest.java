@@ -37,7 +37,7 @@ public class CompromissoDAOTest {
         // Criar compromisso com valores certinhos
         Compromisso compromisso = new Compromisso();
         compromisso.setData("15-09-2023");
-        compromisso.setHora("15:0");
+        compromisso.setHora("15:00");
         compromisso.setDescricao("");   
 
         try {
@@ -56,7 +56,7 @@ public class CompromissoDAOTest {
         // Crie um objeto Compromisso com valores inválidos
         Compromisso compromisso = new Compromisso();
         compromisso.setData("15-09-202");
-        compromisso.setHora("15:0");
+        compromisso.setHora("15:00");
         compromisso.setDescricao("");
 
         try {
