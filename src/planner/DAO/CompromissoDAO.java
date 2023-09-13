@@ -116,6 +116,10 @@ public class CompromissoDAO {
             }
     }    
 
+    void cadastraCompromisso(String string, String string0, String reunião_de_equipe) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     
     
 }

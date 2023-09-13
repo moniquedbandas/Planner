@@ -9,13 +9,18 @@ import planner.model.Compromisso;
 public class ControllerCompromisso {
 
     public boolean cadastraCompromisso(String data, String hora, String descricao) throws ExceptionMVC{
-        if( data != null && hora != null && descricao != null){
+        if(data != null && data.matches("\\d{2}-\\d{2}-\\d{4}") && hora != null && hora.matches("\\d{2}:\\d{2}") && descricao != null){
+           try{
             Compromisso c1 = new Compromisso(data, hora, descricao);
             c1.cadastraCompromisso(c1);
             return true;
-    }
-        return false;      
-    }
+        }catch (ExceptionMVC e) {  
+               System.out.println("erro" + e);
+            return false;
+        }
+    }return false;      
+}
+    
     
     public boolean cadastrarTabelaCompromisso(ArrayList<Compromisso> compromissos) {
         try {
