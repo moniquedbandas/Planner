@@ -10,7 +10,7 @@ import planner.model.Compromisso;
 public class CompromissoDAO {
 
     public void cadastraCompromisso(Compromisso c1) throws ExceptionMVC {
-        String sql = "INSERT INTO compromisso (data, hora,descricao ) VALUES (?,?,?)";
+        String sql = "INSERT INTO compromisso (data, hora, descricao) VALUES (?,?,?)";
         PreparedStatement pStatement = null;
         Connection connection = null;
         

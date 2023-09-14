@@ -241,7 +241,7 @@ public class TelaAtividades extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Compromissos salvos com sucesso!");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao salvar os compromissos.");
+            JOptionPane.showMessageDialog(null, "Erro ao salvar os compromissos." + e);
         }
     }//GEN-LAST:event_btSalvarActionPerformed
 
