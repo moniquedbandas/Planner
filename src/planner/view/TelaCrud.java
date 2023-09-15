@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import planner.DAO.ExceptionMVC;
 import planner.controller.ControllerCompromisso;
 import planner.model.Compromisso;
 
@@ -89,6 +90,11 @@ public class TelaCrud extends javax.swing.JFrame {
         btDeletar.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         btDeletar.setText("Deletar");
         btDeletar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDeletarActionPerformed(evt);
+            }
+        });
 
         btSair.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         btSair.setText("Sair");
@@ -207,6 +213,28 @@ public class TelaCrud extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro encontrado: " + e);
         }
     }//GEN-LAST:event_btEditarActionPerformed
+
+    private void btDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeletarActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTableLista.getModel();
+        int selectedRow = jTableLista.getSelectedRow();
+        boolean sucesso;
+        if(selectedRow == -1){
+            JOptionPane.showMessageDialog(null, "Selecione uma linha da tabela para deletar", "Atenção!", JOptionPane.INFORMATION_MESSAGE);
+            return; 
+        }
+        try {
+            int codCompromisso = Integer.parseInt(model.getValueAt(selectedRow, 0).toString());
+            ControllerCompromisso controllerCompromisso = new ControllerCompromisso();
+            sucesso = controllerCompromisso.excluirCompromisso(codCompromisso);
+            if(sucesso){
+                    model.removeRow(selectedRow);
+                    JOptionPane.showMessageDialog(null, "Compromisso excluido com sucesso!");
+                } else 
+                    JOptionPane.showMessageDialog(null, "Erro ao excluir autor");
+            } catch (ExceptionMVC e){
+                JOptionPane.showMessageDialog(null, "Erro: " + e);
+        } 
+    }//GEN-LAST:event_btDeletarActionPerformed
 
     public static void main(String args[]) {
        
