@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import planner.model.Compromisso;
 
 public class CompromissoDAO {
@@ -116,8 +117,38 @@ public class CompromissoDAO {
             }
     }    
 
-    void cadastraCompromisso(String string, String string0, String reunião_de_equipe) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    void cadastraCompromisso(String string, String string0, String reunião_de_equipe) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
+
+    public void excluirCompromisso(Compromisso c1) throws ExceptionMVC{
+        String sql = "DELETE FROM compromisso WHERE codCompromisso=?";
+        PreparedStatement pStatement = null;
+        Connection connection = null;     
+        
+        try {
+            connection = new ConnectionMVC().getConnection();
+            pStatement = connection.prepareStatement(sql);
+            pStatement.setInt(1, c1.getCodCompromisso());
+            pStatement.execute();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao deletar o compromisso selecionado." + e);
+        }finally{            
+            try{
+                if(pStatement != null){
+                    pStatement.close();
+                } 
+            }catch(SQLException e){
+              throw new ExceptionMVC("Erro ao fechar statement: "+ e);
+            } try {
+                if(connection != null){
+                    connection.close();
+                }
+            }catch(SQLException e){
+               throw new ExceptionMVC("Erro ao fechar a conexao: "+ e);
+                }
+        
+            }
     }
 
     

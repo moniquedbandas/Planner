@@ -57,6 +57,10 @@ public class Compromisso {
         new CompromissoDAO().editarCompromissos(c1);
     }
 
+    public void excluirCompromisso(Compromisso c1) throws ExceptionMVC {
+        new CompromissoDAO().excluirCompromisso(c1);
+    }
+
     
     
     

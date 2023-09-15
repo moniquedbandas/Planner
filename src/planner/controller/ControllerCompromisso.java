@@ -19,8 +19,7 @@ public class ControllerCompromisso {
             return false;
         }
     }return false;      
-}
-    
+}   
     
     public boolean cadastrarTabelaCompromisso(ArrayList<Compromisso> compromissos) {
         try {
@@ -56,4 +55,14 @@ public class ControllerCompromisso {
         return false;
     }
 
+    public boolean excluirCompromisso(int codCompromisso) throws ExceptionMVC{
+        if (codCompromisso==0){
+            return false;
+        } else {
+            Compromisso c1 = new Compromisso();
+            c1.setCodCompromisso(codCompromisso);
+            c1.excluirCompromisso(c1);
+            return true;
+        }
+    }
 }
