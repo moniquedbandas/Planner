@@ -150,14 +150,14 @@ public class TelaAtividades extends javax.swing.JFrame {
                                 .addGap(215, 215, 215)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(painelAtividadesLayout.createSequentialGroup()
-                        .addGap(271, 271, 271)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(274, 274, 274)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(193, Short.MAX_VALUE))
         );
         painelAtividadesLayout.setVerticalGroup(
             painelAtividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAtividadesLayout.createSequentialGroup()
-                .addGap(77, 77, 77)
+                .addGap(69, 69, 69)
                 .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(painelAtividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
