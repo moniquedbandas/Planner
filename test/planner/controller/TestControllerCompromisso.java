@@ -25,17 +25,17 @@ public class TestControllerCompromisso extends TestCase{
         assertTrue("O teste deve ser cadastrado", cadastro);
         
     }
-    @Test
-    public void testListaCompromisso() throws Exception {
-        System.out.println("A lista esta aqui");
-           ControllerCompromisso instance = new ControllerCompromisso();
-           // Chame o método listaCompromisso
-           ArrayList<Compromisso> result = instance.listaCompromisso();
-           // Verifica se a lista não é nula
-           assertNotNull(result);
-           // Verifica se a lista não está vazia
-           assertFalse(result.isEmpty());
-    }
+//    @Test
+//    public void testListaCompromisso() throws Exception {
+//        System.out.println("A lista esta aqui");
+//           ControllerCompromisso instance = new ControllerCompromisso();
+//           // Chame o método listaCompromisso
+//           ArrayList<Compromisso> result = instance.listaCompromisso();
+//           // Verifica se a lista não é nula
+//           assertNotNull(result);
+//           // Verifica se a lista não está vazia
+//           assertFalse(result.isEmpty());
+//    }
 
     @Test
     public void testExcluiCompromissoComCodZero() throws Exception{

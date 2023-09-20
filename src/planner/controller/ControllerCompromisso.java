@@ -5,14 +5,22 @@ import javax.swing.JOptionPane;
 import planner.DAO.CompromissoDAO;
 import planner.DAO.ExceptionMVC;
 import planner.model.Compromisso;
+import planner.view.TelaAtividades;
 
 public class ControllerCompromisso {
-
+    private int codUsuarioLogado; 
+    public ControllerCompromisso(int codUsuarioLogado) {
+        this.codUsuarioLogado = codUsuarioLogado; // Atribua o valor aqui
+    }
+     public ControllerCompromisso(){
+        
+    }
     public boolean cadastraCompromisso(String data, String hora, String descricao) throws ExceptionMVC{
         if(data != null && data.matches("\\d{2}-\\d{2}-\\d{4}") && hora != null && hora.matches("\\d{2}:\\d{2}") && descricao != null){
            try{
-            Compromisso c1 = new Compromisso(data, hora, descricao);
-            c1.cadastraCompromisso(c1);
+            Compromisso compromisso = new Compromisso(data, hora, descricao);
+            compromisso.setCodUsuario(codUsuarioLogado);
+            compromisso.cadastraCompromisso(compromisso);
             return true;
         }catch (ExceptionMVC e) {  
                System.out.println("erro" + e);
@@ -21,10 +29,11 @@ public class ControllerCompromisso {
     }return false;      
 }   
     
-    public boolean cadastrarTabelaCompromisso(ArrayList<Compromisso> compromissos) {
+    public boolean cadastrarTabelaCompromisso(ArrayList<Compromisso> compromissos, int codUsuarioLogado) {
         try {
             CompromissoDAO cDAO = new CompromissoDAO();            
             for (Compromisso compromisso : compromissos) {
+                compromisso.setCodUsuario(codUsuarioLogado);
                 boolean sucesso = cadastraCompromisso(                    
                     compromisso.getData(),
                     compromisso.getHora(),
@@ -41,9 +50,17 @@ public class ControllerCompromisso {
         }
     }
 
-    public ArrayList<Compromisso> listaCompromisso() throws ExceptionMVC {
-        return new Compromisso().listaCompromisso();
+    public ArrayList<Compromisso> listaCompromisso(int codUsuarioLogado) throws ExceptionMVC {
+    System.out.println("Método listaCompromisso (controller) chamado com o código de usuário: " + codUsuarioLogado);
+    //return new Compromisso().listaCompromisso(codUsuario);
+    try {
+        CompromissoDAO cDAO = new CompromissoDAO();
+        return cDAO.listaCompromisso(codUsuarioLogado);
+    } catch (ExceptionMVC e) {
+        e.printStackTrace();
+        return new ArrayList<>(); // Retorne um valor vazio ou trate o erro de acordo com sua lógica
     }
+}
     
     public boolean editarCompromissos(int codCompromisso, String descricao, String data, String hora) throws ExceptionMVC{
         if(descricao != null && data != null && hora != null){

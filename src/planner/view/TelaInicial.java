@@ -7,7 +7,8 @@ import javax.swing.JOptionPane;
 import planner.controller.ControllerPessoa;
 
 public class TelaInicial extends javax.swing.JFrame {
-    
+    private int codUsuario;
+    private int codUsuarioLogado;
     
     public TelaInicial() {
         initComponents();
@@ -137,22 +138,30 @@ public class TelaInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
-        TelaAtividades telaAtiv = new TelaAtividades();
-        try{
+       
+    try {
         String usuario, senha;
         usuario = jTextFieldUsuario.getText();
         senha = jPasswordFieldSenha.getText();
         ControllerPessoa controllerPessoa = new ControllerPessoa();
-        if(controllerPessoa.autenticaPessoa(usuario, senha)){
-            JOptionPane.showMessageDialog(null, "Logado com sucesso!! ");
+        System.out.println("Antes de autenticar o usuário.");
+        if (controllerPessoa.autenticaPessoa(usuario, senha)) {
+            JOptionPane.showMessageDialog(null, "Logado com sucesso!!");
+            codUsuarioLogado = controllerPessoa.obterCodigoDoUsuario(usuario);            
+            System.out.println("Valor de codUsuarioLogado após a autenticação: " + codUsuarioLogado);// Obtenha o código do usuário após o login
+             
+            
+            TelaAtividades telaAtiv = new TelaAtividades(codUsuarioLogado);
+            telaAtiv.login(codUsuarioLogado);
             telaAtiv.setVisible(true);
             this.dispose();
-        }else{
-            JOptionPane.showMessageDialog(null, "Usuario ou senha invalida.");         
-        } 
-        }catch(Exception e){            
-            JOptionPane.showMessageDialog(null, "Erro ao logar: " + e);
-        }       
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario ou senha invalida.");
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Erro ao logar: " + e);
+    }
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
     private void brNovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brNovoUsuarioActionPerformed

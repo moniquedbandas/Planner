@@ -6,13 +6,21 @@ import planner.DAO.PessoaDAO;
 public class Pessoa {
     
     private String usuario, senha;
-
+    private int codUsuario;
+    
     public Pessoa() {
     }
 
     public Pessoa(String usuario, String senha) {
         this.usuario = usuario;
         this.senha = senha;
+    }
+
+    public int getCodUsuario() {
+        return codUsuario;
+    }
+    public void setCodUsuario(int codUsuario) {
+        this.codUsuario = codUsuario;
     }
 
     public String getUsuario() {

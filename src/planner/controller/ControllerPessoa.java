@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 import planner.DAO.ExceptionMVC;
 import planner.DAO.PessoaDAO;
 import planner.model.Pessoa;
+import planner.view.TelaAtividades;
 
 public class ControllerPessoa {
     
@@ -20,7 +21,10 @@ public class ControllerPessoa {
         
         ResultSet rs = pDAO.autenticarPessoa(p);
          try {
-            if (rs.next()) {
+            if (rs.next() ) {
+                int codUsuario= rs.getInt("codUsuario");
+                TelaAtividades telaAtiv = new TelaAtividades(codUsuario);
+                telaAtiv.login(codUsuario);                             
                 return true;
             } else {
                 return false;
@@ -29,15 +33,23 @@ public class ControllerPessoa {
             JOptionPane.showMessageDialog(null, "Erro ao autenticar usuário: " + e);
             return false;
         }
-        
+      
     }
-    public boolean cadastraPessoa(String usuario, String senha) throws ExceptionMVC {
+    public boolean cadastraPessoa(String usuario, String senha) throws ExceptionMVC, SQLException {
         if(usuario != null && senha != null){
+            int codigoUsuario = obterCodigoDoUsuario(usuario);
             Pessoa p = new Pessoa(usuario, senha);
+            p.setCodUsuario(codigoUsuario);
             p.cadastraPessoa(p);
             return true;
         }
         return false;
+    }
+    public int obterCodigoDoUsuario(String usuario) throws ExceptionMVC, SQLException {
+    // Chame o método no DAO para obter o código do usuário
+    PessoaDAO pDAO = new PessoaDAO(); // Substitua 'PessoaDAO' pelo nome do seu DAO real
+    int codigoUsuario = pDAO.obterCodigoDoUsuario(usuario);
+    return codigoUsuario;
     }
     
 }

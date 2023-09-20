@@ -12,9 +12,16 @@ import planner.model.Compromisso;
 
 public class TelaAtividades extends javax.swing.JFrame {
 
-    public TelaAtividades() {
+   private int codUsuarioLogado;    
+   public TelaAtividades(int codUsuarioLogado) {
         initComponents();
+        this.codUsuarioLogado = codUsuarioLogado;
     }
+
+    private TelaAtividades() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -198,7 +205,9 @@ public class TelaAtividades extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    public void login(int codUsuario){
+        codUsuarioLogado = codUsuario;
+    }
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         this.dispose();
         TelaInicial telIni = new TelaInicial();
@@ -222,37 +231,41 @@ public class TelaAtividades extends javax.swing.JFrame {
     }//GEN-LAST:event_btAdicionarActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        boolean sucesso;
-        DefaultTableModel model = (DefaultTableModel) jTableCompromisso.getModel();
-        ArrayList<Compromisso> compromissos = new ArrayList<>();
+    System.out.println("Valor de codUsuarioLogado antes de SALVAR na telaAtividades: " + codUsuarioLogado);
+    boolean sucesso;
+    DefaultTableModel model = (DefaultTableModel) jTableCompromisso.getModel();
+    ArrayList<Compromisso> compromissos = new ArrayList<>();    
+    for (int i = 0; i < model.getRowCount(); i++) {
+        String umaData = (String) model.getValueAt(i, 0);
+        String hora = (String) model.getValueAt(i, 1);
+        String descricao = (String) model.getValueAt(i, 2);
         
-        for(int i=0; i<model.getRowCount();i++){
-            String umaData = (String) model.getValueAt(i, 0);
-            String hora = (String) model.getValueAt(i, 1);
-            String descricao = (String) model.getValueAt(i,2);
-            
-            Compromisso compromisso = new Compromisso(umaData,hora,descricao);
-            compromissos.add(compromisso);            
+        Compromisso compromisso = new Compromisso(umaData, hora, descricao);
+        compromisso.setCodUsuario(codUsuarioLogado);        
+        compromissos.add(compromisso);            
+    }
+    try {
+        ControllerCompromisso controllerCompromisso = new ControllerCompromisso(codUsuarioLogado);
+        sucesso = controllerCompromisso.cadastrarTabelaCompromisso(compromissos, codUsuarioLogado);
+        System.out.println("Valor de codUsuarioLogado apos salvar na telaAtividades:" +codUsuarioLogado);
+        if (sucesso) {
+            JOptionPane.showMessageDialog(null, "Compromissos salvos com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro ao salvar os compromissos.");
         }
-        try {
-            ControllerCompromisso controllerCompromisso = new ControllerCompromisso();
-            sucesso = controllerCompromisso.cadastrarTabelaCompromisso(compromissos);
-            if(sucesso==true){
-                JOptionPane.showMessageDialog(null, "Compromissos salvos com sucesso!");
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao salvar os compromissos." + e);
-        }
+    } catch (Exception e) {
+        // Registre a exceção em um log ou imprima para depuração
+        JOptionPane.showMessageDialog(null, "Erro ao salvar os compromissos: " + e.getMessage());
+    }
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListarActionPerformed
-       TelaCrud telCr = new TelaCrud();
+       TelaCrud telCr = new TelaCrud(codUsuarioLogado);
        telCr.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_btListarActionPerformed
 
     public static void main(String args[]) {
-
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaAtividades().setVisible(true);

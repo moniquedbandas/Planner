@@ -10,12 +10,15 @@ import planner.DAO.ExceptionMVC;
 import planner.controller.ControllerCompromisso;
 import planner.model.Compromisso;
 
-/**
- *
- * @author Monique
- */
 public class TelaCrud extends javax.swing.JFrame {
 
+    private int codUsuario;
+    private int codUsuarioLogado;
+
+    public TelaCrud(int codUsuarioLogado){
+        initComponents();
+        this.codUsuarioLogado = codUsuarioLogado;
+    }
     public TelaCrud() {
         initComponents();
     }
@@ -159,26 +162,32 @@ public class TelaCrud extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    public void login(int codUsuario){
+        codUsuarioLogado = codUsuario;
+    }
     private void btListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListarActionPerformed
+        System.out.println("Método btListarActionPerformed chamado.");
         DefaultTableModel tableModel = (DefaultTableModel) jTableLista.getModel();
-        tableModel.setRowCount(0);
-        ControllerCompromisso controllerCompromisso = new ControllerCompromisso();
-        
+        tableModel.setRowCount(0); 
+       // ControllerCompromisso controllerCompromisso = new ControllerCompromisso(); 
         try{
-            ArrayList<Compromisso> compromissos = controllerCompromisso.listaCompromisso();
+            //int codUsuario = TelaAtividades.getCodUsuarioLogado();       
+            ControllerCompromisso controllerCompromisso = new ControllerCompromisso();  
+            System.out.println("Valor do codUsuarioLogado ao chegar no listar na telaCrud: " + codUsuarioLogado);
+            ArrayList<Compromisso> compromissos = controllerCompromisso.listaCompromisso(codUsuarioLogado);            
+            System.out.println("Número de compromissos retornados: " + compromissos.size()); // Mensagem de depuração
             compromissos.forEach((Compromisso compromisso) -> 
             {tableModel.addRow(new Object[] {compromisso.getCodCompromisso(),compromisso.getData(), compromisso.getHora(), compromisso.getDescricao()});  
             });
             jTableLista.setModel(tableModel);            
-        }
-        catch (Exception e){
+            }
+        catch (ExceptionMVC e){
             JOptionPane.showMessageDialog(null, "Erro"+ e);
-        }
+        }        
     }//GEN-LAST:event_btListarActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
-       TelaAtividades telAtiv = new TelaAtividades();
+       TelaAtividades telAtiv = new TelaAtividades(codUsuarioLogado);
        telAtiv.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_btSairActionPerformed

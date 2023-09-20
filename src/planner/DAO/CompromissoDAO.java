@@ -9,20 +9,19 @@ import javax.swing.JOptionPane;
 import planner.model.Compromisso;
 
 public class CompromissoDAO {
-
-    public void cadastraCompromisso(Compromisso c1) throws ExceptionMVC {
-        String sql = "INSERT INTO compromisso (data, hora, descricao) VALUES (?,?,?)";
+    public void cadastraCompromisso(Compromisso compromisso) throws ExceptionMVC {
+        String sql = "INSERT INTO compromisso (data, hora, descricao, codUsuario) VALUES (?,?,?,?)";
         PreparedStatement pStatement = null;
         Connection connection = null;
         
         try{
             connection = new ConnectionMVC().getConnection();
             pStatement = connection.prepareStatement(sql);
-            pStatement.setString(1, c1.getData());
-            pStatement.setString(2, c1.getHora());
-            pStatement.setString(3, c1.getDescricao());
-            pStatement.execute();
-            
+            pStatement.setString(1, compromisso.getData());
+            pStatement.setString(2, compromisso.getHora());
+            pStatement.setString(3, compromisso.getDescricao());
+            pStatement.setInt(4, compromisso.getCodUsuario());
+            pStatement.execute();            
         } catch(SQLException e){
             throw new ExceptionMVC("Erro ao cadastrar compromissos: "+ e);
         } finally{            
@@ -42,9 +41,9 @@ public class CompromissoDAO {
         }
     }
 
-    public ArrayList<Compromisso> listaCompromisso() throws ExceptionMVC{        
-    String sql = "SELECT * FROM compromisso ORDER BY data ";
-    //String sql = "SELECT * FROM compromisso WHERE codPessoa =? ORDER BY data ";
+    public ArrayList<Compromisso> listaCompromisso(int codUsuario) throws ExceptionMVC{        
+   // String sql = "SELECT * FROM compromisso ORDER BY data ";
+    String sql = "SELECT * FROM compromisso WHERE codUsuario =? ORDER BY data ";
         Connection connection = null;
         PreparedStatement pStatement = null;
         ArrayList<Compromisso> compromissos = null;   
@@ -52,15 +51,17 @@ public class CompromissoDAO {
          try{
             connection = new ConnectionMVC().getConnection();
             pStatement = connection.prepareStatement(sql);
-            ResultSet rs = pStatement.executeQuery(sql);            
+            pStatement.setInt(1, codUsuario);
+            ResultSet rs = pStatement.executeQuery();            
             if(rs!=null){
-                  compromissos = new ArrayList<Compromisso>();
+                  compromissos = new ArrayList<>();
                   while(rs.next()){
                       Compromisso compromisso = new Compromisso();
                       compromisso.setCodCompromisso(rs.getInt("codCompromisso"));                                            
                       compromisso.setData(rs.getString("data"));
                       compromisso.setHora(rs.getString("hora"));  
                       compromisso.setDescricao(rs.getString("descricao")); 
+                      System.out.println("valor usuario no DAO: " + codUsuario);
                       compromissos.add(compromisso);                                         
                 }
             }
@@ -117,10 +118,6 @@ public class CompromissoDAO {
             }
     }    
 
-//    void cadastraCompromisso(String string, String string0, String reunião_de_equipe) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//    }
-
     public void excluirCompromisso(Compromisso c1) throws ExceptionMVC{
         String sql = "DELETE FROM compromisso WHERE codCompromisso=?";
         PreparedStatement pStatement = null;
@@ -151,6 +148,4 @@ public class CompromissoDAO {
             }
     }
 
-    
-    
 }

@@ -45,7 +45,7 @@ public class PessoaDAO {
         connection = new ConnectionMVC().getConnection();
         
         try{
-            String sql = "SELECT * FROM pessoa WHERE usuario = ? and senha = ?";
+            String sql = "SELECT codUsuario FROM pessoa WHERE usuario = ? and senha = ?";
             PreparedStatement pStatement = connection.prepareStatement(sql);
             pStatement.setString(1, p.getUsuario());
             pStatement.setString(2, p.getSenha());
@@ -55,9 +55,46 @@ public class PessoaDAO {
             
         }catch(SQLException e){
             //throw new ExceptionMVC("Erro ao logar o usuario: "+ e);
-            JOptionPane.showMessageDialog(null, "Usuario: " + e);
+            JOptionPane.showMessageDialog(null, "Erro ao logar o usuario: " + e);
             return null;
         }
+    }
+    
+    public int obterCodigoDoUsuario(String usuario) throws SQLException, ExceptionMVC {
+    int codigoUsuario = -1; // Valor padrão, caso o usuário não seja encontrado
+
+    Connection connection = null;
+    PreparedStatement pStatement = null;
+    
+
+    try {
+        connection = new ConnectionMVC().getConnection();
+        String sql = "SELECT codUsuario FROM pessoa WHERE usuario=?";
+        pStatement = connection.prepareStatement(sql);
+        pStatement.setString(1, usuario);
+        ResultSet rs = pStatement.executeQuery();
+
+        if (rs.next()) {
+            codigoUsuario = rs.getInt("codUsuario");
+        }
+    }catch (SQLException e) {
+            throw new ExceptionMVC("Erro ao obter codigo do usuario: "+ e);
+        } finally {
+            try{
+                if(pStatement != null){
+                    pStatement.close();
+                } 
+            }catch(SQLException e){
+              throw new ExceptionMVC("Erro ao fechar statement: "+ e);
+            } try {
+                if(connection != null){
+                    connection.close();
+                }
+            }catch(SQLException e){
+               throw new ExceptionMVC("Erro ao fechar a conexao: "+ e);
+            }       
+    }
+    return codigoUsuario;
     }
 
  }
