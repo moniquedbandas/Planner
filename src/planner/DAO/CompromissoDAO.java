@@ -42,7 +42,6 @@ public class CompromissoDAO {
     }
 
     public ArrayList<Compromisso> listaCompromisso(int codUsuario) throws ExceptionMVC{        
-   // String sql = "SELECT * FROM compromisso ORDER BY data ";
     String sql = "SELECT * FROM compromisso WHERE codUsuario =? ORDER BY data ";
         Connection connection = null;
         PreparedStatement pStatement = null;

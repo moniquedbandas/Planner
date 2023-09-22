@@ -39,8 +39,7 @@ public class PessoaDAO {
                throw new ExceptionMVC("Erro ao fechar a conexao: "+ e);
             }
         }
-    }
-        
+    }        
     public ResultSet autenticarPessoa(Pessoa p) {
         connection = new ConnectionMVC().getConnection();
         
@@ -53,20 +52,17 @@ public class PessoaDAO {
             ResultSet rs = pStatement.executeQuery();
             return rs;
             
-        }catch(SQLException e){
-            //throw new ExceptionMVC("Erro ao logar o usuario: "+ e);
+        }catch(SQLException e){            
             JOptionPane.showMessageDialog(null, "Erro ao logar o usuario: " + e);
             return null;
         }
     }
     
     public int obterCodigoDoUsuario(String usuario) throws SQLException, ExceptionMVC {
-    int codigoUsuario = -1; // Valor padrão, caso o usuário não seja encontrado
-
+    int codigoUsuario = -1; //caso o usuário não seja encontrado
     Connection connection = null;
     PreparedStatement pStatement = null;
     
-
     try {
         connection = new ConnectionMVC().getConnection();
         String sql = "SELECT codUsuario FROM pessoa WHERE usuario=?";
@@ -96,7 +92,6 @@ public class PessoaDAO {
     }
     return codigoUsuario;
     }
-
  }
     
 

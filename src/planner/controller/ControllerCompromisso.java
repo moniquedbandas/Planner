@@ -10,10 +10,9 @@ import planner.view.TelaAtividades;
 public class ControllerCompromisso {
     private int codUsuarioLogado; 
     public ControllerCompromisso(int codUsuarioLogado) {
-        this.codUsuarioLogado = codUsuarioLogado; // Atribua o valor aqui
+        this.codUsuarioLogado = codUsuarioLogado; 
     }
-     public ControllerCompromisso(){
-        
+     public ControllerCompromisso(){        
     }
     public boolean cadastraCompromisso(String data, String hora, String descricao) throws ExceptionMVC{
         if(data != null && data.matches("\\d{2}-\\d{2}-\\d{4}") && hora != null && hora.matches("\\d{2}:\\d{2}") && descricao != null){
@@ -27,29 +26,27 @@ public class ControllerCompromisso {
             return false;
         }
     }return false;      
-}   
-    
+}    
     public boolean cadastrarTabelaCompromisso(ArrayList<Compromisso> compromissos, int codUsuarioLogado) {
-        try {
-            CompromissoDAO cDAO = new CompromissoDAO();            
-            for (Compromisso compromisso : compromissos) {
-                compromisso.setCodUsuario(codUsuarioLogado);
-                boolean sucesso = cadastraCompromisso(                    
-                    compromisso.getData(),
-                    compromisso.getHora(),
-                    compromisso.getDescricao()
-                );
-                if (!sucesso) {                    
-                    return false;
-                }
+    try {
+        CompromissoDAO cDAO = new CompromissoDAO();            
+        for (Compromisso compromisso : compromissos) {
+            compromisso.setCodUsuario(codUsuarioLogado);
+            boolean sucesso = cadastraCompromisso(                    
+                compromisso.getData(),
+                compromisso.getHora(),
+                compromisso.getDescricao()
+            );
+            if (!sucesso) {                    
+                return false;
             }
-            return true;
-        } catch (ExceptionMVC e) {
-            JOptionPane.showMessageDialog(null, "Erro: " + e);
-            return false;
         }
+        return true;
+    } catch (ExceptionMVC e) {
+        JOptionPane.showMessageDialog(null, "Erro de cadastro no controller: " + e);
+        return false;
     }
-
+}
     public ArrayList<Compromisso> listaCompromisso(int codUsuarioLogado) throws ExceptionMVC {
     System.out.println("Método listaCompromisso (controller) chamado com o código de usuário: " + codUsuarioLogado);
     //return new Compromisso().listaCompromisso(codUsuario);
@@ -57,11 +54,10 @@ public class ControllerCompromisso {
         CompromissoDAO cDAO = new CompromissoDAO();
         return cDAO.listaCompromisso(codUsuarioLogado);
     } catch (ExceptionMVC e) {
-        e.printStackTrace();
+        JOptionPane.showMessageDialog(null,"Errinho: " + e);
         return new ArrayList<>(); // Retorne um valor vazio ou trate o erro de acordo com sua lógica
     }
-}
-    
+}    
     public boolean editarCompromissos(int codCompromisso, String descricao, String data, String hora) throws ExceptionMVC{
         if(descricao != null && data != null && hora != null){
             Compromisso c1 = new Compromisso(descricao, data, hora);
@@ -71,7 +67,6 @@ public class ControllerCompromisso {
         }
         return false;
     }
-
     public boolean excluirCompromisso(int codCompromisso) throws ExceptionMVC{
         if (codCompromisso==0){
             return false;

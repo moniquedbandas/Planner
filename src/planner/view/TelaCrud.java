@@ -11,10 +11,7 @@ import planner.controller.ControllerCompromisso;
 import planner.model.Compromisso;
 
 public class TelaCrud extends javax.swing.JFrame {
-
-    private int codUsuario;
     private int codUsuarioLogado;
-
     public TelaCrud(int codUsuarioLogado){
         initComponents();
         this.codUsuarioLogado = codUsuarioLogado;
@@ -166,24 +163,22 @@ public class TelaCrud extends javax.swing.JFrame {
         codUsuarioLogado = codUsuario;
     }
     private void btListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListarActionPerformed
-        System.out.println("Método btListarActionPerformed chamado.");
-        DefaultTableModel tableModel = (DefaultTableModel) jTableLista.getModel();
-        tableModel.setRowCount(0); 
-       // ControllerCompromisso controllerCompromisso = new ControllerCompromisso(); 
-        try{
-            //int codUsuario = TelaAtividades.getCodUsuarioLogado();       
-            ControllerCompromisso controllerCompromisso = new ControllerCompromisso();  
-            System.out.println("Valor do codUsuarioLogado ao chegar no listar na telaCrud: " + codUsuarioLogado);
-            ArrayList<Compromisso> compromissos = controllerCompromisso.listaCompromisso(codUsuarioLogado);            
-            System.out.println("Número de compromissos retornados: " + compromissos.size()); // Mensagem de depuração
-            compromissos.forEach((Compromisso compromisso) -> 
-            {tableModel.addRow(new Object[] {compromisso.getCodCompromisso(),compromisso.getData(), compromisso.getHora(), compromisso.getDescricao()});  
-            });
-            jTableLista.setModel(tableModel);            
-            }
-        catch (ExceptionMVC e){
-            JOptionPane.showMessageDialog(null, "Erro"+ e);
-        }        
+    System.out.println("Método btListarActionPerformed chamado.");
+    DefaultTableModel tableModel = (DefaultTableModel) jTableLista.getModel();
+    tableModel.setRowCount(0);        
+    try{
+        //int codUsuario = TelaAtividades.getCodUsuarioLogado();       
+        ControllerCompromisso controllerCompromisso = new ControllerCompromisso();  
+        //System.out.println("Valor do codUsuarioLogado ao chegar no listar na telaCrud: " + codUsuarioLogado);
+        ArrayList<Compromisso> compromissos = controllerCompromisso.listaCompromisso(codUsuarioLogado);            
+        //System.out.println("Número de compromissos retornados: " + compromissos.size());
+        compromissos.forEach((Compromisso compromisso)->{tableModel.addRow(new Object[] {compromisso.getCodCompromisso(),compromisso.getData(), compromisso.getHora(), compromisso.getDescricao()});  
+        });
+        jTableLista.setModel(tableModel);            
+        }
+    catch (ExceptionMVC e){
+        JOptionPane.showMessageDialog(null, "Erro"+ e);
+    }        
     }//GEN-LAST:event_btListarActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed

@@ -12,13 +12,11 @@ public class ConnectionMVC {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch(ClassNotFoundException e){
-            e.printStackTrace();
         }
         try{
             //conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/plannertest", "root", ""); //esse banco é para testes somente
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/planner", "root", "");
         }catch(SQLException e){
-            e.printStackTrace();
         }
         return conn;
     }

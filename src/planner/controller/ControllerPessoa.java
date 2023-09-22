@@ -8,9 +8,8 @@ import planner.model.Pessoa;
 import planner.view.TelaAtividades;
 
 public class ControllerPessoa {
-    
     private PessoaDAO pDAO;
-    
+   
     public ControllerPessoa(){
         pDAO = new PessoaDAO();
     }
@@ -32,8 +31,7 @@ public class ControllerPessoa {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao autenticar usuário: " + e);
             return false;
-        }
-      
+        }      
     }
     public boolean cadastraPessoa(String usuario, String senha) throws ExceptionMVC, SQLException {
         if(usuario != null && senha != null){
@@ -46,10 +44,10 @@ public class ControllerPessoa {
         return false;
     }
     public int obterCodigoDoUsuario(String usuario) throws ExceptionMVC, SQLException {
-    // Chame o método no DAO para obter o código do usuário
-    PessoaDAO pDAO = new PessoaDAO(); // Substitua 'PessoaDAO' pelo nome do seu DAO real
-    int codigoUsuario = pDAO.obterCodigoDoUsuario(usuario);
-    return codigoUsuario;
+    // Chama o método no DAO para obter o código do usuário
+        PessoaDAO pDAO = new PessoaDAO(); 
+        int codigoUsuario = pDAO.obterCodigoDoUsuario(usuario);
+        return codigoUsuario;
     }
     
 }

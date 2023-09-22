@@ -17,12 +17,9 @@ public class TelaAtividades extends javax.swing.JFrame {
         initComponents();
         this.codUsuarioLogado = codUsuarioLogado;
     }
-
     private TelaAtividades() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
-
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -157,14 +154,14 @@ public class TelaAtividades extends javax.swing.JFrame {
                                 .addGap(215, 215, 215)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(painelAtividadesLayout.createSequentialGroup()
-                        .addGap(274, 274, 274)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(290, 290, 290)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(193, Short.MAX_VALUE))
         );
         painelAtividadesLayout.setVerticalGroup(
             painelAtividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAtividadesLayout.createSequentialGroup()
-                .addGap(69, 69, 69)
+                .addGap(65, 65, 65)
                 .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(painelAtividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -217,8 +214,7 @@ public class TelaAtividades extends javax.swing.JFrame {
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         jTextFieldDescricao.setText("");
-        jComboBoxHorario.setSelectedIndex(0);
-        //jDateChooser1.setDateFormatString("");        
+        jComboBoxHorario.setSelectedIndex(0);       
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
@@ -231,7 +227,7 @@ public class TelaAtividades extends javax.swing.JFrame {
     }//GEN-LAST:event_btAdicionarActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-    System.out.println("Valor de codUsuarioLogado antes de SALVAR na telaAtividades: " + codUsuarioLogado);
+    //System.out.println("Valor de codUsuarioLogado antes de SALVAR na telaAtividades: " + codUsuarioLogado);
     boolean sucesso;
     DefaultTableModel model = (DefaultTableModel) jTableCompromisso.getModel();
     ArrayList<Compromisso> compromissos = new ArrayList<>();    
@@ -247,14 +243,13 @@ public class TelaAtividades extends javax.swing.JFrame {
     try {
         ControllerCompromisso controllerCompromisso = new ControllerCompromisso(codUsuarioLogado);
         sucesso = controllerCompromisso.cadastrarTabelaCompromisso(compromissos, codUsuarioLogado);
-        System.out.println("Valor de codUsuarioLogado apos salvar na telaAtividades:" +codUsuarioLogado);
+        //System.out.println("Valor de codUsuarioLogado apos salvar na telaAtividades:" +codUsuarioLogado);
         if (sucesso) {
             JOptionPane.showMessageDialog(null, "Compromissos salvos com sucesso!");
         } else {
             JOptionPane.showMessageDialog(null, "Erro ao salvar os compromissos.");
         }
-    } catch (Exception e) {
-        // Registre a exceção em um log ou imprima para depuração
+    } catch (Exception e) {        
         JOptionPane.showMessageDialog(null, "Erro ao salvar os compromissos: " + e.getMessage());
     }
     }//GEN-LAST:event_btSalvarActionPerformed

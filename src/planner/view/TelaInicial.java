@@ -6,8 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import planner.controller.ControllerPessoa;
 
-public class TelaInicial extends javax.swing.JFrame {
-    private int codUsuario;
+public class TelaInicial extends javax.swing.JFrame {    
     private int codUsuarioLogado;
     
     public TelaInicial() {
@@ -144,12 +143,11 @@ public class TelaInicial extends javax.swing.JFrame {
         usuario = jTextFieldUsuario.getText();
         senha = jPasswordFieldSenha.getText();
         ControllerPessoa controllerPessoa = new ControllerPessoa();
-        System.out.println("Antes de autenticar o usuário.");
+        //System.out.println("Antes de autenticar o usuário.");
         if (controllerPessoa.autenticaPessoa(usuario, senha)) {
             JOptionPane.showMessageDialog(null, "Logado com sucesso!!");
             codUsuarioLogado = controllerPessoa.obterCodigoDoUsuario(usuario);            
-            System.out.println("Valor de codUsuarioLogado após a autenticação: " + codUsuarioLogado);// Obtenha o código do usuário após o login
-             
+            System.out.println("Valor de codUsuarioLogado após a autenticação: " + codUsuarioLogado);// Obter o código do usuário após o login
             
             TelaAtividades telaAtiv = new TelaAtividades(codUsuarioLogado);
             telaAtiv.login(codUsuarioLogado);
