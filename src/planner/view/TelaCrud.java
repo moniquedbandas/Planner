@@ -163,11 +163,10 @@ public class TelaCrud extends javax.swing.JFrame {
         codUsuarioLogado = codUsuario;
     }
     private void btListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListarActionPerformed
-    System.out.println("Método btListarActionPerformed chamado.");
+    //System.out.println("Método botao Listar chamado.");
     DefaultTableModel tableModel = (DefaultTableModel) jTableLista.getModel();
     tableModel.setRowCount(0);        
-    try{
-        //int codUsuario = TelaAtividades.getCodUsuarioLogado();       
+    try{     
         ControllerCompromisso controllerCompromisso = new ControllerCompromisso();  
         //System.out.println("Valor do codUsuarioLogado ao chegar no listar na telaCrud: " + codUsuarioLogado);
         ArrayList<Compromisso> compromissos = controllerCompromisso.listaCompromisso(codUsuarioLogado);            

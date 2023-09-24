@@ -14,8 +14,8 @@ public class ConnectionMVC {
         } catch(ClassNotFoundException e){
         }
         try{
-            //conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/plannertest", "root", ""); //esse banco é para testes somente
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/planner", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/plannertest", "root", ""); //esse banco é para testes somente
+            //conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/planner", "root", "");
         }catch(SQLException e){
         }
         return conn;

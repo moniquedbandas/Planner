@@ -47,7 +47,7 @@ public class CompromissoDAO {
         PreparedStatement pStatement = null;
         ArrayList<Compromisso> compromissos = null;   
          
-         try{
+        try{
             connection = new ConnectionMVC().getConnection();
             pStatement = connection.prepareStatement(sql);
             pStatement.setInt(1, codUsuario);
@@ -60,7 +60,7 @@ public class CompromissoDAO {
                       compromisso.setData(rs.getString("data"));
                       compromisso.setHora(rs.getString("hora"));  
                       compromisso.setDescricao(rs.getString("descricao")); 
-                      System.out.println("valor usuario no DAO: " + codUsuario);
+                      //System.out.println("valor usuario no DAO: " + codUsuario);
                       compromissos.add(compromisso);                                         
                 }
             }
@@ -112,9 +112,8 @@ public class CompromissoDAO {
                 }
             }catch(SQLException e){
                throw new ExceptionMVC("Erro ao fechar a conexao: "+ e);
-                }
-        
-            }
+                }        
+        }
     }    
 
     public void excluirCompromisso(Compromisso c1) throws ExceptionMVC{

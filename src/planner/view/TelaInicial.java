@@ -147,7 +147,7 @@ public class TelaInicial extends javax.swing.JFrame {
         if (controllerPessoa.autenticaPessoa(usuario, senha)) {
             JOptionPane.showMessageDialog(null, "Logado com sucesso!!");
             codUsuarioLogado = controllerPessoa.obterCodigoDoUsuario(usuario);            
-            System.out.println("Valor de codUsuarioLogado após a autenticação: " + codUsuarioLogado);// Obter o código do usuário após o login
+        //System.out.println("Valor de codUsuarioLogado após a autenticação: " + codUsuarioLogado);// Obter o código do usuário após o login
             
             TelaAtividades telaAtiv = new TelaAtividades(codUsuarioLogado);
             telaAtiv.login(codUsuarioLogado);

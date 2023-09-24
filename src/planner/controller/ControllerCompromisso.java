@@ -48,8 +48,7 @@ public class ControllerCompromisso {
     }
 }
     public ArrayList<Compromisso> listaCompromisso(int codUsuarioLogado) throws ExceptionMVC {
-    System.out.println("Método listaCompromisso (controller) chamado com o código de usuário: " + codUsuarioLogado);
-    //return new Compromisso().listaCompromisso(codUsuario);
+    //System.out.println("Método listaCompromisso (controller) chamado com o código de usuário: " + codUsuarioLogado);
     try {
         CompromissoDAO cDAO = new CompromissoDAO();
         return cDAO.listaCompromisso(codUsuarioLogado);
